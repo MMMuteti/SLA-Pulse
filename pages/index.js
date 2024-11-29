@@ -22,3 +22,34 @@ export default function Home() {
       );
     }
   };
+
+  return (
+    <div>
+      <h1>SLA Tracker</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {slas.map((sla) => (
+            <tr key={sla.id}>
+              <td>{sla.task}</td>
+              <td>{new Date(sla.deadline).toLocaleString()}</td>
+              <td>{sla.status}</td>
+              <td>
+                <button onClick={() => updateStatus(sla.id, "Completed")}>
+                  Mark as Completed
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
