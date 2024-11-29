@@ -1,9 +1,12 @@
 {
     "dependencies": {
-      "express": "*",
-      "redis": "2.8.0"
+        "express": "*",
+        "redis": "^4.7.0"
     },
-    "scripts": {
-      "start": "node index.js"
-    }
-  }
+"scripts": {
+  "start": "node index.js",
+  "test": "jest",
+  "build": "webpack",
+  "dev": "next dev"
+}
+}
