@@ -53,3 +53,34 @@ export default function Home() {
     </div>
   );
 }
+
+import Alert from "../components/Alert";
+import { useState } from "react";
+
+export default function Home() {
+  const [alert, setAlert] = useState(null);
+
+  const triggerAlert = (type, message) => {
+    setAlert({ type, message });
+    setTimeout(() => setAlert(null), 5000); // Auto-clear alert after 5 seconds
+  };
+
+  return (
+    <div>
+      <h1>SLA Tracker</h1>
+      <button onClick={() => triggerAlert("success", "SLA Updated Successfully!")}>
+        Show Success Alert
+      </button>
+      <button onClick={() => triggerAlert("error", "SLA Breach Detected!")}>
+        Show Error Alert
+      </button>
+      <button onClick={() => triggerAlert("warning", "Approaching SLA Deadline!")}>
+        Show Warning Alert
+      </button>
+
+      {alert && <Alert message={alert.message} type={alert.type} />}
+    </div>
+  );
+}
+
+
