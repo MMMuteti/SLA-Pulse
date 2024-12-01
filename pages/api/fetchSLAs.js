@@ -4,7 +4,7 @@ export default async function fetchSLAs(req, res) {
   if (req.method === "GET") {
     try {
       // Fetch data from the backend API
-      const response = await axios.get("http://localhost:5000/api/slas");
+      const response = await axios.get("http://localhost:5500/api/slas");
       const slaData = response.data;
 
       // Send the data back to the client

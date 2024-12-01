@@ -1,12 +1,14 @@
 {
     "dependencies": {
-        "express": "*",
+        "body-parser": "^1.20.3",
+        "express": "^4.21.1",
+        "fs": "^0.0.1-security",
         "redis": "^4.7.0"
     },
-"scripts": {
-  "start": "node index.js",
-  "test": "jest",
-  "build": "webpack",
-  "dev": "next dev"
-}
+    "scripts": {
+        "start": "node index.js",
+        "test": "jest",
+        "build": "webpack",
+        "dev": "next dev"
+    }
 }
