@@ -84,3 +84,21 @@ export default function Home() {
 }
 
 
+import Dashboard from "../components/Dashboard";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [slaData, setSlaData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/slas")
+      .then((response) => response.json())
+      .then((data) => setSlaData(data));
+  }, []);
+
+  return (
+    <div>
+      <Dashboard slaData={slaData} />
+    </div>
+  );
+}
