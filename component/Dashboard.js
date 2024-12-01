@@ -1,5 +1,5 @@
 import Alert from "../components/Alert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [alert, setAlert] = useState(null);
@@ -26,7 +26,6 @@ export default function Home() {
     </div>
   );
 }
-
 
 import React from "react";
 import SLAChart from "./SLAChart";
@@ -93,3 +92,10 @@ export default function Dashboard({ slaData }) {
     </div>
   );
 }
+
+useEffect(() => {
+    fetch("/api/fetchSLAs")
+    .then((response) => response.json())
+    .then((data) => setSladata(data));
+} []);
+
