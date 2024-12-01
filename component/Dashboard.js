@@ -97,5 +97,4 @@ useEffect(() => {
     fetch("/api/fetchSLAs")
     .then((response) => response.json())
     .then((data) => setSladata(data));
-} []);
-
+})
