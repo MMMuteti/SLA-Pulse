@@ -8,10 +8,9 @@ export default async function updateSLAs(req, res) {
 
   const { id, status } = req.body; // Extract SLA ID and new status from the request body
 
-  // Validate request body
-  if (!id || !status) {
-    return res.status(400).json({ error: "Missing required fields: id or status" });
-  }
+    try {
+      // Update SLA status in the backend
+      const response = await axios.put(`http://localhost:5500/api/slas/${id}`, { status });
 
   try {
     // Update SLA status in the backend
