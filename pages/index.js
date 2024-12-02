@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import Alert from "../components/Alert";
 import Dashboard from "../components/Dashboard";
 
@@ -61,6 +62,35 @@ export default function Home() {
       <Dashboard slaData={slaData} />
 
       {/* SLA Table */}
+=======
+
+export default function Home() {
+  const [slas, setSlas] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/slas")
+      .then((response) => response.json())
+      .then((data) => setSlas(data));
+  }, []);
+
+  const updateStatus = async (id, status) => {
+    const response = await fetch("/api/update-sla", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status }),
+    });
+    const result = await response.json();
+    if (result.success) {
+      setSlas((prev) =>
+        prev.map((sla) => (sla.id === id ? { ...sla, status } : sla))
+      );
+    }
+  };
+
+  return (
+    <div>
+      <h1>SLA Tracker</h1>
+>>>>>>> master
       <table>
         <thead>
           <tr>
@@ -71,7 +101,11 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
           {slaData.map((sla) => (
+=======
+          {slas.map((sla) => (
+>>>>>>> master
             <tr key={sla.id}>
               <td>{sla.task}</td>
               <td>{new Date(sla.deadline).toLocaleString()}</td>
@@ -88,3 +122,55 @@ export default function Home() {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+import Alert from "../components/Alert";
+import { useState } from "react";
+
+export default function Home() {
+  const [alert, setAlert] = useState(null);
+
+  const triggerAlert = (type, message) => {
+    setAlert({ type, message });
+    setTimeout(() => setAlert(null), 5000); // Auto-clear alert after 5 seconds
+  };
+
+  return (
+    <div>
+      <h1>SLA Tracker</h1>
+      <button onClick={() => triggerAlert("success", "SLA Updated Successfully!")}>
+        Show Success Alert
+      </button>
+      <button onClick={() => triggerAlert("error", "SLA Breach Detected!")}>
+        Show Error Alert
+      </button>
+      <button onClick={() => triggerAlert("warning", "Approaching SLA Deadline!")}>
+        Show Warning Alert
+      </button>
+
+      {alert && <Alert message={alert.message} type={alert.type} />}
+    </div>
+  );
+}
+
+
+import Dashboard from "../components/Dashboard";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [slaData, setSlaData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/slas")
+      .then((response) => response.json())
+      .then((data) => setSlaData(data));
+  }, []);
+
+  return (
+    <div>
+      <Dashboard slaData={slaData} />
+    </div>
+  );
+}
+>>>>>>> master
