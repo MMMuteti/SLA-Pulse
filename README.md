@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SLA Pulse - SLA Tracker
 
 SLA Pulse is an SLA (Service Level Agreement) Tracker built with **React** and **Next.js**. The app allows users to track and manage their tasks, monitor SLA deadlines, and receive alerts for SLA updates, breaches, and warnings. With an interactive dashboard and real-time data, it provides a comprehensive solution to monitor your tasks' SLA statuses.
