@@ -1,41 +1,18 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
-    "dependencies": {
-        "body-parser": "^1.20.3",
-        "express": "^4.21.1",
-        "fs": "^0.0.1-security",
-        "next": "^15.0.3",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "redis": "^4.7.0"
-<<<<<<< HEAD
-=======
->>>>>>> 7b4a4d7 (code enhancement)
-=======
->>>>>>> master
-    },
-    "scripts": {
-        "start": "node index.js",
-        "test": "jest",
-        "build": "webpack",
-        "dev": "next dev"
-    }
-}
-<<<<<<< HEAD
-
-{
-    "type": "module",
-    "scripts": {
-      "dev": "next dev"
-    },
-    "dependencies": {
-      "next": "15.0.3",
-      "react": "^18.0.0",
-      "react-dom": "^18.0.0"
-    }
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security",
+    "next": "15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "redis": "^4.7.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "build": "webpack",
+    "dev": "next dev"
   }
-=======
->>>>>>> master
+}
