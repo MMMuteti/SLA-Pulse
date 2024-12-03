@@ -123,6 +123,7 @@ export default function Home() {
   );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 import Alert from "../components/Alert";
@@ -174,3 +175,6 @@ export default function Home() {
   );
 }
 >>>>>>> master
+=======
+v
+>>>>>>> c69f1da (package.json conflic resoltuion)
