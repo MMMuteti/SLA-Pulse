@@ -10,7 +10,7 @@ export default async function updateSLAs(req, res) {
 
     try {
       // Update SLA status in the backend
-      const response = await axios.put(`http://localhost:5500/api/slas/${id}`, { status });
+      const response = await axios.put(`http://localhost:3000/api/slas/${id}`, { status });
 
       // Respond to the client with the updated SLA
       res.status(200).json(response.data);
