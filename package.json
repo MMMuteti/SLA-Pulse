@@ -5,9 +5,11 @@
     "express": "^4.21.1",
     "fs": "^0.0.1-security",
     "next": "15.0.3",
+    "raw-loader": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "redis": "^4.7.0"
+    "redis": "^4.7.0",
+    "webpack": "^5.96.1"
   },
   "scripts": {
     "start": "node index.js",
