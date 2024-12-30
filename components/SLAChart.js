@@ -1,5 +1,9 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import { Chart, LinearScale, CategoryScale, PointElement, LineElement } from 'chart.js';
+
+// Register the scales and elements
+Chart.register(LinearScale, CategoryScale, PointElement, LineElement);
 
 export default function SLAChart({ data }) {
   const chartData = {

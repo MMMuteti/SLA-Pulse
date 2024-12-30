@@ -3,18 +3,36 @@ import SLAChart from "./SLAChart";
 
 export default function Dashboard() {
   const [slaData, setSlaData] = useState([]);
+  const [summary, setSummary] = useState({
+    totalTasks: 0,
+    completedTasks: 0,
+    pendingTasks: 0,
+  });
 
   useEffect(() => {
     fetch("/api/fetchSLAs")
       .then((response) => response.json())
-      .then((data) => setSlaData(data))
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setSlaData(data);
+          setSummary(calculateSummary(data));
+        } else {
+          console.error("Fetched SLA data is not an array:", data);
+          setSlaData([]);
+          setSummary({
+            totalTasks: 0,
+            completedTasks: 0,
+            pendingTasks: 0,
+          });
+        }
+      })
       .catch((error) => console.error("Error fetching SLA data:", error));
   }, []);
 
-  const calculateSummary = () => {
-    const totalTasks = slaData.length;
-    const completedTasks = slaData.filter((task) => task.status === "Completed").length;
-    const pendingTasks = slaData.filter((task) => task.status === "In Progress").length;
+  const calculateSummary = (data) => {
+    const totalTasks = data.length;
+    const completedTasks = data.filter((task) => task.status === "Completed").length;
+    const pendingTasks = data.filter((task) => task.status === "In Progress").length;
 
     return {
       totalTasks,
@@ -22,8 +40,6 @@ export default function Dashboard() {
       pendingTasks,
     };
   };
-
-  const summary = calculateSummary();
 
   return (
     <div className="dashboard">
@@ -59,13 +75,15 @@ export default function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            {slaData.map((task) => (
-              <tr key={task.id}>
-                <td>{task.task}</td>
-                <td>{new Date(task.deadline).toLocaleString()}</td>
-                <td>{task.status}</td>
-              </tr>
-            ))}
+            {Array.isArray(slaData) ? 
+              slaData.map((task) => (
+                <tr key={task.id}>
+                  <td>{task.task}</td>
+                  <td>{new Date(task.deadline).toLocaleString()}</td>
+                  <td>{task.status}</td>
+                </tr>
+              )) : 
+              <tr><td colSpan="3">No tasks available</td></tr>}
           </tbody>
         </table>
       </div>
